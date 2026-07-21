@@ -104,7 +104,7 @@ let sleep = 7.8;
 
   const RING_CIRCUMFERENCE = 2 * Math.PI * 92;
   const ringProgress = document.getElementById('ringProgress');
-  const stepsValueEl = document.getElementById('stepsValue');
+  const stepsValueEl = document.getElementById('StepsValue');
   const trendArrowEl = document.getElementById('trendArrow');
   const readingAgeEl = document.getElementById('readingAge');
 
@@ -132,7 +132,7 @@ let sleep = 7.8;
     ringProgress.style.stroke = color;
     ringProgress.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - fraction);
 
-    animateDigits(StepsValueEl, 0, value, 900);
+    animateDigits(stepsValueEl, 0, value, 900);
 
     trendArrowEl.style.color = color;
     trendArrowEl.style.background = color + '1A';
