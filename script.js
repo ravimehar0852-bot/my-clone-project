@@ -9,6 +9,10 @@
   /* ---------------- State ---------------- */
 
   const dailyGoal = 10000; // steps goal
+   const targetRange = {
+  low: 0,
+  high: dailyGoal
+};
 
   // Last 8 glucose readings across the day, oldest first.
   const readingHistory = [
@@ -100,7 +104,7 @@ let sleep = 7.8;
 
   const RING_CIRCUMFERENCE = 2 * Math.PI * 92;
   const ringProgress = document.getElementById('ringProgress');
-  const glucoseValueEl = document.getElementById('glucoseValue');
+  const stepsValueEl = document.getElementById('stepsValue');
   const trendArrowEl = document.getElementById('trendArrow');
   const readingAgeEl = document.getElementById('readingAge');
 
@@ -128,7 +132,7 @@ let sleep = 7.8;
     ringProgress.style.stroke = color;
     ringProgress.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - fraction);
 
-    animateDigits(glucoseValueEl, 0, value, 900);
+    animateDigits(stepsValueEl, 0, value, 900);
 
     trendArrowEl.style.color = color;
     trendArrowEl.style.background = color + '1A';
@@ -146,7 +150,7 @@ let sleep = 7.8;
   /* ---------------- Time in range ---------------- */
 
   function recomputeTimeInRange() {
-    const values = readingHistory.map((r) => r.value).concat(currentGlucose);
+    const values = readingHistory.map((r) => r.value).concat(currentsteps);
     let low = 0, inR = 0, high = 0;
     values.forEach((v) => {
       const z = zoneOf(v);
