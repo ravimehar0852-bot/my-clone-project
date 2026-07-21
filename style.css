@@ -329,13 +329,65 @@ html,body{
 
 /* ---------- Trends screen ---------- */
 
-.chart-card{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:16px 12px 8px;
+.progress-container{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
 }
-#trendChart{ width:100%; height:auto; display:block; }
+
+.progress-card{
+    flex:1;
+    min-width:120px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:18px 10px;
+    text-align:center;
+}
+
+.progress-ring{
+    position:relative;
+    width:120px;
+    height:120px;
+    margin:auto;
+}
+
+.progress-ring svg{
+    transform:rotate(-90deg);
+}
+
+.progress-ring circle{
+    fill:none;
+    stroke-width:10;
+}
+
+.progress-ring .bg{
+    stroke:#2b2b2b;
+}
+
+.progress-ring .progress{
+    stroke:var(--brand);
+    stroke-linecap:round;
+    stroke-dasharray:314;
+    stroke-dashoffset:314;
+    transition:1s ease;
+}
+
+.progress-ring span{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:18px;
+    font-weight:700;
+}
+
+.progress-card h3{
+    margin-top:15px;
+    font-size:15px;
+}
 
 .stat-row{
   display:grid;
