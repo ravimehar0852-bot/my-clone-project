@@ -104,7 +104,7 @@ let sleep = 7.8;
 
   const RING_CIRCUMFERENCE = 2 * Math.PI * 92;
   const ringProgress = document.getElementById('ringProgress');
-  const StepsValueEl = document.getElementById('StepsValue');
+  const stepsValueEl = document.getElementById('stepsValue');
   const trendArrowEl = document.getElementById('trendArrow');
   const readingAgeEl = document.getElementById('readingAge');
 
