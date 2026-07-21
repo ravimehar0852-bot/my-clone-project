@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PulseBuddy — Glucose Tracking</title>
+<title>FitTrack Pro - Fitness Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,8 +19,8 @@
     <section class="screen" id="screen-dashboard" data-screen="dashboard">
       <header class="greeting">
         <div>
-          <p class="eyebrow">Good morning</p>
-          <h1>Ananya</h1>
+          <p class="eyebrow">Welcome Back</p>
+<h1>Ravi 💪</h1>
         </div>
         <div class="avatar" id="btnProfile" role="button" tabindex="0" aria-label="Open profile">A</div>
       </header>
@@ -32,21 +32,21 @@
             <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="92"></circle>
           </svg>
           <div class="readout">
-            <span class="readout-value" id="glucoseValue">118</span>
-            <span class="readout-unit">mg/dL</span>
+            <span class="readout-value">8450</span>
+<span class="readout-unit">Steps</span>
             <span class="readout-trend" id="trendArrow">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10 L7 4 L12 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              rising slowly
+              Goal 84% Complete
             </span>
           </div>
         </div>
-        <p class="reading-meta">Last reading · <span id="readingAge">2 min ago</span> · Fingerstick</p>
+        <p class="reading-meta">Today's Activity · Updated just now· <span id="readingAge">2 min ago</span> · Fingerstick</p>
       </div>
 
       <div class="tir-card">
         <div class="tir-head">
-          <span>Time in range · today</span>
-          <span class="tir-percent" id="tirPercent">78%</span>
+          <span>Daily Goal Progress</span>
+          <span class="tir-percent" id="tirPercent">84%</span>
         </div>
         <div class="tir-bar" id="tirBar">
           <div class="tir-seg tir-low" style="width:6%"></div>
@@ -54,37 +54,37 @@
           <div class="tir-seg tir-high" style="width:16%"></div>
         </div>
         <div class="tir-legend">
-          <span><i class="dot dot-low"></i>Low</span>
-          <span><i class="dot dot-in"></i>In range</span>
-          <span><i class="dot dot-high"></i>High</span>
+          <span><i class="dot dot-low"></i>Warm-up</span>
+          <span><i class="dot dot-in"></i>Workout</span>
+          <span><i class="dot dot-high"></i>Recovery</span>
         </div>
       </div>
 
       <div class="quick-actions">
         <button class="qa-btn" data-log-type="meal">
-          <span class="qa-icon">🍽️</span>Meal
+          <span class="qa-icon">🏋️</span> Workout
         </button>
         <button class="qa-btn" data-log-type="insulin">
-          <span class="qa-icon">💉</span>Insulin
+          <span class="qa-icon">🥗 </span>  Diet
         </button>
         <button class="qa-btn" data-log-type="activity">
-          <span class="qa-icon">🏃</span>Activity
+          <span class="qa-icon">💧 </span> Water
         </button>
         <button class="qa-btn" data-log-type="reading">
-          <span class="qa-icon">🩸</span>Reading
+          <span class="qa-icon">😴</span> Sleep
         </button>
       </div>
 
-      <div class="section-label">Today's medication</div>
+      <div class="section-label">Today's Workout</div>
       <div class="med-card">
         <div class="med-info">
-          <p class="med-name">Metformin · 500mg</p>
-          <p class="med-time">Next dose · 1:00 PM</p>
+          <p class="med-name">Chest & Triceps</p>
+          <p class="med-time">Duration · 60 Minutes</p>
         </div>
-        <button class="med-check" id="medCheck">Mark taken</button>
+        <button class="med-check" id="medCheck">start</button>
       </div>
 
-      <div class="section-label">Recent activity</div>
+      <div class="section-label">Today's Fitness Log</div>
       <ul class="log-list" id="dashboardLogList"></ul>
     </section>
 
@@ -92,7 +92,7 @@
     <section class="screen hidden" id="screen-trends" data-screen="trends">
       <header class="screen-header">
         <h2>Trends</h2>
-        <p>Last 8 readings</p>
+        <p>Last 7 Days Progress</p>
       </header>
 
       <div class="chart-card">
@@ -102,15 +102,15 @@
       <div class="stat-row">
         <div class="stat-box">
           <p class="stat-value" id="statAvg">126</p>
-          <p class="stat-label">Average mg/dL</p>
+          <p class="stat-label">Calories</p>
         </div>
         <div class="stat-box">
           <p class="stat-value" id="statInRange">78%</p>
-          <p class="stat-label">In range</p>
+          <p class="stat-label">Workout Days</p>
         </div>
         <div class="stat-box">
           <p class="stat-value" id="statVariability">Low</p>
-          <p class="stat-label">Variability</p>
+          <p class="stat-label">Performance</p>
         </div>
       </div>
 
@@ -121,34 +121,34 @@
     <!-- ============ LOG ENTRY ============ -->
     <section class="screen hidden" id="screen-log" data-screen="log">
       <header class="screen-header">
-        <h2 id="logTitle">Log a reading</h2>
+        <h2 id="logTitle">Add Workout</h2>
         <p id="logSubtitle">Add a fingerstick or CGM value</p>
       </header>
 
       <form id="logForm" class="log-form">
         <div class="field-group" id="glucoseField">
-          <label for="glucoseInput">Glucose (mg/dL)</label>
+          <label for="glucoseInput">Workout Name</label>
           <input type="number" id="glucoseInput" inputmode="numeric" placeholder="e.g. 132" min="20" max="500">
         </div>
 
         <div class="field-group" id="carbField">
-          <label for="carbInput">Carbs (g)</label>
+          <label for="carbInput">Calories Burned</label>
           <input type="number" id="carbInput" inputmode="numeric" placeholder="e.g. 45" min="0" max="300">
         </div>
 
         <div class="field-group" id="doseField">
-          <label for="doseInput">Insulin dose (units)</label>
+          <label for="doseInput">Workout Duration</label>
           <input type="number" id="doseInput" inputmode="numeric" placeholder="e.g. 4" min="0" max="100">
         </div>
 
         <div class="field-group" id="activityField">
-          <label for="activityInput">Activity</label>
+          <label for="activityInput">Workout Type</label>
           <select id="activityInput">
-            <option value="Walk">Walk</option>
-            <option value="Run">Run</option>
+            <option value="Walk">Gym</option>
+            <option value="Run">Running</option>
             <option value="Cycling">Cycling</option>
             <option value="Yoga">Yoga</option>
-            <option value="Strength">Strength training</option>
+            <option value="Strength">CrossFit</option>
           </select>
         </div>
 
@@ -157,7 +157,7 @@
           <input type="text" id="noteInput" placeholder="e.g. Before lunch">
         </div>
 
-        <button type="submit" class="submit-btn">Save entry</button>
+        <button type="submit" class="submit-btn">Save Workout</button>
       </form>
 
       <p class="form-confirm hidden" id="formConfirm">Entry saved to today's log.</p>
@@ -173,25 +173,25 @@
       <div class="profile-card">
         <div class="avatar avatar-lg">A</div>
         <div>
-          <p class="profile-name">Ananya Rao</p>
-          <p class="profile-sub">Type 1 · since 2016</p>
+          <p class="profile-name">ravi</p>
+          <p class="profile-sub">Fitness Enthusiast</p>
         </div>
       </div>
 
-      <div class="section-label">Target range</div>
+      <div class="section-label">Daily Goal</div>
       <div class="range-card">
         <div>
-          <p class="range-value">70–180</p>
-          <p class="range-label">mg/dL</p>
+          <p class="range-value">10,000 </p>
+          <p class="range-label">steps</p>
         </div>
         <button class="range-edit" id="rangeEdit">Adjust</button>
       </div>
 
-      <div class="section-label">Connected device</div>
+      <div class="section-label">Connected Smartwatch</div>
       <div class="device-card">
         <div class="device-dot"></div>
         <div>
-          <p class="device-name">PulseSensor CGM</p>
+          <p class="device-name">Apple Watch / Fitbit</p>
           <p class="device-status">Connected · 87% battery</p>
         </div>
       </div>
