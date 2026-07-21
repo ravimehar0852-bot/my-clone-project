@@ -90,28 +90,6 @@ document.getElementById("liveSteps").innerHTML=steps;
 const circumference = 2 * Math.PI * radius;
   
 
-// Steps (Goal 10000)
-const stepsCircle = document.querySelector(".steps");
-if (stepsCircle) {
-    const percent = Math.min(steps / 10000, 1);
-    stepsCircle.style.strokeDasharray = circumference;
-    stepsCircle.style.strokeDashoffset =
-        circumference - (percent * circumference);
-
-    document.getElementById("stepsValue").innerHTML = steps;
-}
-
-// Calories (Goal 1000)
-const caloriesCircle = document.querySelector(".calories");
-if (caloriesCircle) {
-    const percent = Math.min(calories / 1000, 1);
-    caloriesCircle.style.strokeDasharray = circumference;
-    caloriesCircle.style.strokeDashoffset =
-        circumference - (percent * circumference);
-
-    document.getElementById("caloriesValue").innerHTML = calories;
-}
-
 
   // Dashboard Live Update
 const goal = 10000;
