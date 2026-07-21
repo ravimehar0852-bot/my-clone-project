@@ -249,10 +249,10 @@ let sleep = 7.8;
       const val = parseInt(document.getElementById('glucoseInput').value, 10);
       if (!val) return;
       entry = { type: 'reading', icon: '🩸', title: val + ' mg/dL', sub: 'Fingerstick', minsAgo: 0 };
-      currentGlucose = val;
+      currentsteps = val;
       readingHistory.push({ hour: 'now', value: val });
       readingHistory.shift();
-      updateReadingCard(val, val > currentGlucose ? 'rising' : 'steady', 'flat');
+      updateReadingCard(val, val > currentSteps ? 'Goal Updated' : 'Updated', 'flat');
     } else if (activeLogType === 'meal') {
       const carbs = document.getElementById('carbInput').value || '0';
       entry = { type: 'meal', icon: '🍽️', title: 'Meal logged', sub: carbs + 'g carbs', minsAgo: 0 };
