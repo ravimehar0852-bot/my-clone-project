@@ -95,6 +95,19 @@ if (ring) {
     ring.style.strokeDashoffset =
         circumference - (circumference * percent / 100);
 }
+  // Daily Goal Progress
+const goalBar = document.getElementById("tirBar");
+
+if (goalBar) {
+    goalBar.innerHTML =
+        '<div class="tir-seg tir-in" style="width:' + percent + '%"></div>' +
+        '<div class="tir-seg tir-high" style="width:' + (100 - percent) + '%"></div>';
+}
+
+// Goal Completed
+if (steps >= goal) {
+    alert("🎉 Congratulations! Daily Goal Completed.");
+}
 
 document.getElementById("liveCalories").innerHTML=
 Math.floor(km*60)+" kcal";
