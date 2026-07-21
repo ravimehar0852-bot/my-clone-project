@@ -95,10 +95,7 @@ let sleep = 7.8;
     btn.addEventListener('click', () => showScreen(btn.dataset.nav));
   });
 
-  document.getElementById('btnProfile').addEventListener('click', () => showScreen('profile'));
-  document.getElementById('btnProfile').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') showScreen('profile');
-  });
+  
 
   /* ---------------- Ring gauge + readout ---------------- */
 
