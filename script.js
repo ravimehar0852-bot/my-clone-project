@@ -248,20 +248,44 @@ let sleep = 7.8;
     if (activeLogType === 'reading') {
       const val = parseInt(document.getElementById('glucoseInput').value, 10);
       if (!val) return;
-      entry = { type: 'reading', icon: '🩸', title: val + ' mg/dL', sub: 'Fingerstick', minsAgo: 0 };
+      entry = {
+  type: 'reading',
+  icon: '🏋️',
+  title: 'Workout',
+  sub: 'Completed',
+  minsAgo: 0
+};
       currentSteps = val;
       readingHistory.push({ hour: 'now', value: val });
       readingHistory.shift();
       updateReadingCard(val, val > currentSteps ? 'Goal Updated' : 'Updated', 'flat');
     } else if (activeLogType === 'meal') {
       const carbs = document.getElementById('carbInput').value || '0';
-      entry = { type: 'meal', icon: '🍽️', title: 'Meal logged', sub: carbs + 'g carbs', minsAgo: 0 };
+      entry = {
+  type: 'meal',
+  icon: '🥗',
+  title: 'Diet',
+  sub: carbs + ' Calories',
+  minsAgo: 0
+};
     } else if (activeLogType === 'insulin') {
       const dose = document.getElementById('doseInput').value || '0';
-      entry = { type: 'insulin', icon: '💉', title: 'Insulin logged', sub: dose + ' units, rapid-acting', minsAgo: 0 };
+      entry = {
+  type: 'insulin',
+  icon: '💧',
+  title: 'Water',
+  sub: dose + ' Glasses',
+  minsAgo: 0
+};
     } else if (activeLogType === 'activity') {
       const act = document.getElementById('activityInput').value;
-      entry = { type: 'activity', icon: '🏃', title: act + ' logged', sub: 'Just now', minsAgo: 0 };
+      entry = {
+  type: 'activity',
+  icon: '😴',
+  title: 'Sleep',
+  sub: 'Just now',
+  minsAgo: 0
+};
     }
 
     if (entry) {
