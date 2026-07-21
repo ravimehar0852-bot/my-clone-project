@@ -131,4 +131,19 @@ document.getElementById("stopRun").onclick = function () {
   alert("Running Stopped ✅");
 };
 
+function updateWeeklyReport(steps, distance, calories, seconds) {
 
+    document.getElementById("weeklySteps").innerHTML = steps;
+
+    document.getElementById("weeklyDistance").innerHTML =
+        distance.toFixed(2) + " KM";
+
+    document.getElementById("weeklyCalories").innerHTML =
+        calories;
+
+    let h = Math.floor(seconds / 3600);
+    let m = Math.floor((seconds % 3600) / 60);
+
+    document.getElementById("weeklyTime").innerHTML =
+        `${h}h ${m}m`;
+}
