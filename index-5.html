@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseBuddy — Glucose Tracking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage">
+  <div class="phone">
+    <div class="notch"></div>
+
+    <div class="statusbar">
+      <span class="time">9:41</span>
+      <div class="status-icons">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect x="0" y="6" width="3" height="6" rx="0.5" fill="currentColor"/><rect x="4.5" y="4" width="3" height="8" rx="0.5" fill="currentColor"/><rect x="9" y="2" width="3" height="10" rx="0.5" fill="currentColor"/><rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="currentColor"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 2.5C10.9 2.5 13.5 3.7 15.4 5.6L14 7C12.4 5.4 10.3 4.5 8 4.5C5.7 4.5 3.6 5.4 2 7L0.6 5.6C2.5 3.7 5.1 2.5 8 2.5Z" fill="currentColor"/><circle cx="8" cy="9.5" r="1.5" fill="currentColor"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="currentColor"/><rect x="2" y="2" width="16" height="8" rx="1.2" fill="currentColor"/><rect x="22" y="4" width="1.5" height="4" rx="0.7" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <!-- ============ DASHBOARD ============ -->
+    <section class="screen" id="screen-dashboard" data-screen="dashboard">
+      <header class="greeting">
+        <div>
+          <p class="eyebrow">Good morning</p>
+          <h1>Ananya</h1>
+        </div>
+        <div class="avatar" id="btnProfile" role="button" tabindex="0" aria-label="Open profile">A</div>
+      </header>
+
+      <div class="reading-card" id="readingCard">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+            <circle class="ring-track" cx="110" cy="110" r="92"></circle>
+            <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="92"></circle>
+          </svg>
+          <div class="readout">
+            <span class="readout-value" id="glucoseValue">118</span>
+            <span class="readout-unit">mg/dL</span>
+            <span class="readout-trend" id="trendArrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10 L7 4 L12 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              rising slowly
+            </span>
+          </div>
+        </div>
+        <p class="reading-meta">Last reading · <span id="readingAge">2 min ago</span> · Fingerstick</p>
+      </div>
+
+      <div class="tir-card">
+        <div class="tir-head">
+          <span>Time in range · today</span>
+          <span class="tir-percent" id="tirPercent">78%</span>
+        </div>
+        <div class="tir-bar" id="tirBar">
+          <div class="tir-seg tir-low" style="width:6%"></div>
+          <div class="tir-seg tir-in" style="width:78%"></div>
+          <div class="tir-seg tir-high" style="width:16%"></div>
+        </div>
+        <div class="tir-legend">
+          <span><i class="dot dot-low"></i>Low</span>
+          <span><i class="dot dot-in"></i>In range</span>
+          <span><i class="dot dot-high"></i>High</span>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <button class="qa-btn" data-log-type="meal">
+          <span class="qa-icon">🍽️</span>Meal
+        </button>
+        <button class="qa-btn" data-log-type="insulin">
+          <span class="qa-icon">💉</span>Insulin
+        </button>
+        <button class="qa-btn" data-log-type="activity">
+          <span class="qa-icon">🏃</span>Activity
+        </button>
+        <button class="qa-btn" data-log-type="reading">
+          <span class="qa-icon">🩸</span>Reading
+        </button>
+      </div>
+
+      <div class="section-label">Today's medication</div>
+      <div class="med-card">
+        <div class="med-info">
+          <p class="med-name">Metformin · 500mg</p>
+          <p class="med-time">Next dose · 1:00 PM</p>
+        </div>
+        <button class="med-check" id="medCheck">Mark taken</button>
+      </div>
+
+      <div class="section-label">Recent activity</div>
+      <ul class="log-list" id="dashboardLogList"></ul>
+    </section>
+
+    <!-- ============ TRENDS ============ -->
+    <section class="screen hidden" id="screen-trends" data-screen="trends">
+      <header class="screen-header">
+        <h2>Trends</h2>
+        <p>Last 8 readings</p>
+      </header>
+
+      <div class="chart-card">
+        <canvas id="trendChart" width="600" height="340"></canvas>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box">
+          <p class="stat-value" id="statAvg">126</p>
+          <p class="stat-label">Average mg/dL</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value" id="statInRange">78%</p>
+          <p class="stat-label">In range</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value" id="statVariability">Low</p>
+          <p class="stat-label">Variability</p>
+        </div>
+      </div>
+
+      <div class="section-label">Reading log</div>
+      <ul class="log-list" id="trendsLogList"></ul>
+    </section>
+
+    <!-- ============ LOG ENTRY ============ -->
+    <section class="screen hidden" id="screen-log" data-screen="log">
+      <header class="screen-header">
+        <h2 id="logTitle">Log a reading</h2>
+        <p id="logSubtitle">Add a fingerstick or CGM value</p>
+      </header>
+
+      <form id="logForm" class="log-form">
+        <div class="field-group" id="glucoseField">
+          <label for="glucoseInput">Glucose (mg/dL)</label>
+          <input type="number" id="glucoseInput" inputmode="numeric" placeholder="e.g. 132" min="20" max="500">
+        </div>
+
+        <div class="field-group" id="carbField">
+          <label for="carbInput">Carbs (g)</label>
+          <input type="number" id="carbInput" inputmode="numeric" placeholder="e.g. 45" min="0" max="300">
+        </div>
+
+        <div class="field-group" id="doseField">
+          <label for="doseInput">Insulin dose (units)</label>
+          <input type="number" id="doseInput" inputmode="numeric" placeholder="e.g. 4" min="0" max="100">
+        </div>
+
+        <div class="field-group" id="activityField">
+          <label for="activityInput">Activity</label>
+          <select id="activityInput">
+            <option value="Walk">Walk</option>
+            <option value="Run">Run</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Strength">Strength training</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="noteInput">Note (optional)</label>
+          <input type="text" id="noteInput" placeholder="e.g. Before lunch">
+        </div>
+
+        <button type="submit" class="submit-btn">Save entry</button>
+      </form>
+
+      <p class="form-confirm hidden" id="formConfirm">Entry saved to today's log.</p>
+    </section>
+
+    <!-- ============ PROFILE ============ -->
+    <section class="screen hidden" id="screen-profile" data-screen="profile">
+      <header class="screen-header">
+        <h2>Profile</h2>
+        <p>Your targets and device</p>
+      </header>
+
+      <div class="profile-card">
+        <div class="avatar avatar-lg">A</div>
+        <div>
+          <p class="profile-name">Ananya Rao</p>
+          <p class="profile-sub">Type 1 · since 2016</p>
+        </div>
+      </div>
+
+      <div class="section-label">Target range</div>
+      <div class="range-card">
+        <div>
+          <p class="range-value">70–180</p>
+          <p class="range-label">mg/dL</p>
+        </div>
+        <button class="range-edit" id="rangeEdit">Adjust</button>
+      </div>
+
+      <div class="section-label">Connected device</div>
+      <div class="device-card">
+        <div class="device-dot"></div>
+        <div>
+          <p class="device-name">PulseSensor CGM</p>
+          <p class="device-status">Connected · 87% battery</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-nav="dashboard">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12L12 4L20 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10V19H18V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" data-nav="trends">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V13M10 19V7M16 19V15M22 19V4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Trends</span>
+      </button>
+      <button class="nav-btn nav-fab" data-nav="log">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="nav-btn" data-nav="profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20C5 16.4 8.1 14 12 14C15.9 14 19 16.4 19 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <p class="stage-caption">PulseBuddy — glucose tracking, reimagined as a daily readout</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
