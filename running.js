@@ -84,9 +84,7 @@ updateWeeklyReport(
 );
 
 document.getElementById("liveSteps").innerHTML=steps;
-  // ===== Circular Progress Rings =====
-const radius = 50;
-const circumference = 2 * Math.PI * radius;
+  
 
 // Steps (Goal 10000)
 const stepsCircle = document.querySelector(".steps");
@@ -110,17 +108,7 @@ if (caloriesCircle) {
     document.getElementById("caloriesValue").innerHTML = calories;
 }
 
-// Distance (Goal 10 KM)
-const distanceCircle = document.querySelector(".distance");
-if (distanceCircle) {
-    const percent = Math.min(distance / 10, 1);
-    distanceCircle.style.strokeDasharray = circumference;
-    distanceCircle.style.strokeDashoffset =
-        circumference - (percent * circumference);
 
-    document.getElementById("distanceValue").innerHTML =
-        distance.toFixed(2) + " KM";
-}
   // Dashboard Live Update
 const goal = 10000;
 
