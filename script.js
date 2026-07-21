@@ -8,30 +8,55 @@
 
   /* ---------------- State ---------------- */
 
-  const targetRange = { low: 70, high: 180 };
+  const dailyGoal = 10000; // steps goal
 
   // Last 8 glucose readings across the day, oldest first.
   const readingHistory = [
-    { hour: '6 AM', value: 96 },
-    { hour: '8 AM', value: 142 },
-    { hour: '10 AM', value: 118 },
-    { hour: '12 PM', value: 165 },
-    { hour: '2 PM', value: 132 },
-    { hour: '4 PM', value: 108 },
-    { hour: '6 PM', value: 121 },
-    { hour: '9 AM+1', value: 118 }
-  ];
-
+  { hour: 'Mon', value: 6500 },
+  { hour: 'Tue', value: 7200 },
+  { hour: 'Wed', value: 8400 },
+  { hour: 'Thu', value: 9100 },
+  { hour: 'Fri', value: 7800 },
+  { hour: 'Sat', value: 10300 },
+  { hour: 'Sun', value: 8450 }
+];
   // Combined activity feed, newest first.
   const activityLog = [
-    { type: 'reading', icon: '🩸', title: '118 mg/dL', sub: 'Fingerstick', minsAgo: 2 },
-    { type: 'meal', icon: '🍽️', title: 'Breakfast logged', sub: '42g carbs', minsAgo: 48 },
-    { type: 'insulin', icon: '💉', title: 'Insulin logged', sub: '4 units, rapid-acting', minsAgo: 50 },
-    { type: 'activity', icon: '🏃', title: 'Walk logged', sub: '25 min, moderate', minsAgo: 130 }
-  ];
+  {
+    type:'workout',
+    icon:'🏋️',
+    title:'Chest Workout',
+    sub:'60 Minutes',
+    minsAgo:20
+  },
+  {
+    type:'water',
+    icon:'💧',
+    title:'Water Intake',
+    sub:'2.5 Liters',
+    minsAgo:60
+  },
+  {
+    type:'steps',
+    icon:'👣',
+    title:'8450 Steps',
+    sub:'Today's Walking',
+    minsAgo:120
+  },
+  {
+    type:'sleep',
+    icon:'😴',
+    title:'Sleep',
+    sub:'7h 45m',
+    minsAgo:480
+  }
+];
 
-  let currentGlucose = 118;
+  let currentSteps = 8450;
   let medTaken = false;
+let calories = 620;
+let water = 2.5;
+let sleep = 7.8;
 
   /* ---------------- Helpers ---------------- */
 
@@ -318,7 +343,7 @@
   /* ---------------- Init ---------------- */
 
   function init() {
-    updateReadingCard(currentGlucose, 'rising slowly', 'up');
+    updateReadingCard(currentSteps,'Goal 84% Complete','up');
     recomputeTimeInRange();
     renderLogList('dashboardLogList', 4);
     renderLogList('trendsLogList');
