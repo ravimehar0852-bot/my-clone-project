@@ -73,6 +73,7 @@ let km=totalDistance/1000;
 document.getElementById("distance").innerHTML=km.toFixed(2)+" KM";
 
 let steps=Math.floor(km*1300);
+  console.log("KM:", km, "Steps:", steps);
   let calories = Math.floor(km * 60);
 
 let totalSeconds = Math.floor((Date.now() - startTime) / 1000);
