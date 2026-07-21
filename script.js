@@ -249,7 +249,7 @@ let sleep = 7.8;
       const val = parseInt(document.getElementById('glucoseInput').value, 10);
       if (!val) return;
       entry = { type: 'reading', icon: '🩸', title: val + ' mg/dL', sub: 'Fingerstick', minsAgo: 0 };
-      currentsteps = val;
+      currentSteps = val;
       readingHistory.push({ hour: 'now', value: val });
       readingHistory.shift();
       updateReadingCard(val, val > currentSteps ? 'Goal Updated' : 'Updated', 'flat');
