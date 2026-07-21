@@ -1,8 +1,9 @@
+
 /* =========================================================================
    PulseBuddy — app logic
    Vanilla JS, no dependencies. All state lives in memory for this session.
    ========================================================================= */
-
+alert("Script Loaded");
 (function () {
   'use strict';
 
