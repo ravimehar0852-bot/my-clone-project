@@ -46,7 +46,8 @@ document.getElementById("liveTime").innerHTML=
 
 },1000);
 
-watchId=navigator.geolocation.watchPosition((pos)=>{
+watchId = navigator.geolocation.watchPosition(
+(pos) => {
   
 
 const lat=pos.coords.latitude;
@@ -128,6 +129,16 @@ if (steps >= goal) {
 
 document.getElementById("liveCalories").innerHTML=
 Math.floor(km*60)+" kcal";
+  },
+(error) => {
+    alert("Location Error: " + error.message);
+},
+{
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+}
+);
 
 });
 
