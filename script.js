@@ -110,7 +110,7 @@ let sleep = 7.8;
 
   function gaugeFraction(value) {
     // Purely visual fill, mapped across a wide 40-300 mg/dL window.
-    return Math.min(Math.max((value - 40) / (300 - 40), 0), 1);
+    return Math.min(value / dailyGoal, 1);
   }
 
   function animateDigits(el, from, to, duration) {
