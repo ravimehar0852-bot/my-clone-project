@@ -47,27 +47,6 @@ html,body{
 
 /* ---------- Stage (browser preview wrapper, not part of the app) ---------- */
 
-.stage{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  padding:40px 16px;
-  background:
-    radial-gradient(circle at 20% 15%, rgba(47,168,138,0.18), transparent 55%),
-    radial-gradient(circle at 85% 80%, rgba(76,110,245,0.12), transparent 50%),
-    #0F2521;
-}
-
-.stage-caption{
-  font-family:'Space Grotesk', sans-serif;
-  color:rgba(245,248,246,0.55);
-  font-size:13px;
-  letter-spacing:0.02em;
-}
-
 
 
 /* ---------- Screens ---------- */
