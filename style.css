@@ -666,3 +666,23 @@ font-weight:600;
     object-fit:cover;
     border-radius:50%;
 }
+.app-name{
+    text-align:right;
+    margin-right:10px;
+}
+
+.app-name h2{
+    margin:0;
+    color:#fff;
+    font-size:22px;
+    font-weight:700;
+    line-height:1;
+}
+
+.app-name span{
+    display:block;
+    color:#66ff99;
+    font-size:12px;
+    letter-spacing:4px;
+    font-weight:600;
+}
