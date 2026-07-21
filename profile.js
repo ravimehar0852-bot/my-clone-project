@@ -144,3 +144,26 @@ function getUserName() {
 document.addEventListener("DOMContentLoaded", () => {
     loadUserProfile();
 });
+function loadProfileSection() {
+
+    const profile = ProfileManager.getProfile();
+
+    if (!profile) return;
+
+    const name = document.getElementById("profileName");
+    const photo = document.getElementById("profilePhoto");
+    const goal = document.getElementById("dailyGoalValue");
+
+    if (name) {
+        name.textContent = profile.name || "Runner";
+    }
+
+    if (photo && profile.profilePhoto) {
+        photo.src = profile.profilePhoto;
+    }
+
+    if (goal) {
+        goal.textContent = (profile.dailyGoal || "10000") + " Steps";
+    }
+
+}
