@@ -84,6 +84,8 @@ updateWeeklyReport(
 );
 
 document.getElementById("liveSteps").innerHTML=steps;
+  const radius = 50;
+const circumference = 2 * Math.PI * radius;
   
 
 // Steps (Goal 10000)
@@ -135,7 +137,7 @@ const goalBar = document.getElementById("tirBar");
 
 if (goalBar) {
     goalBar.innerHTML =
-        '<div class="tir-seg tir-in" style="width:' + goalPercent + '%"p></div>' +
+        '<div class="tir-seg tir-in" style="width:' + goalPercent + '%"></div>'
         '<div class="tir-seg tir-high" style="width:' + (100 - goalPercent) + '%"></div>';
 }
 
