@@ -117,7 +117,7 @@ if (stepsValue) {
     stepsValue.innerHTML = steps;
 }
 
-const percent = Math.min(Math.floor((steps / goal) * 100), 100);
+const goalPercent = Math.min(Math.floor((steps / goal) * 100), 100);
 
 const goalText = document.querySelector(".tir-percent");
 if (goalText) {
