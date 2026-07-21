@@ -27,6 +27,7 @@ return R*c;
 }
 
 document.getElementById("startRun").onclick=function(){
+  if (timer) return;
 
 startTime=Date.now();
 
