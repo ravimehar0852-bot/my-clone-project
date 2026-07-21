@@ -81,10 +81,19 @@ Math.floor(km*60)+" kcal";
 
 };
 
-document.getElementById("stopRun").onclick=function(){
+document.getElementById("stopRun").onclick = function () {
 
-navigator.geolocation.clearWatch(watchId);
+  if (watchId !== null) {
+    navigator.geolocation.clearWatch(watchId);
+    watchId = null;
+  }
 
-clearInterval(timer);
+  if (timer !== null) {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  alert("Running Stopped ✅");
+};
 
 };
