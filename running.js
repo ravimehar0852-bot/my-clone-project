@@ -94,7 +94,7 @@ const circumference = 2 * Math.PI * radius;
   // Dashboard Live Update
 const goal = 10000;
 
-const stepsValue = document.getElementById("StepsValue");
+const stepsValue = document.getElementById("stepsValue") || document.getElementById("StepsValue");
 if (stepsValue) {
     stepsValue.innerHTML = steps;
 }
