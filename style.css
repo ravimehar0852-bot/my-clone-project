@@ -549,6 +549,49 @@ z-index:999;
     background:#1B6B63;
     color:#fff;
 }
+.weekly-report{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.report-box{
+background:#fff;
+padding:20px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.report-box h3{
+font-size:28px;
+color:#1B6B63;
+}
+
+.report-box p{
+margin-top:5px;
+color:#666;
+}
+
+.achievement-title{
+margin-top:25px;
+margin-bottom:15px;
+}
+
+.achievement-list{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.achievement{
+background:#fff;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+font-weight:600;
+}
 
 #stopRun{
     background:#E53935;
