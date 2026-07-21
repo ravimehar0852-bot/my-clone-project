@@ -68,47 +68,6 @@ html,body{
   letter-spacing:0.02em;
 }
 
-/* ---------- Phone frame ---------- */
-
-.phone{
-  position:relative;
-  width:390px;
-  max-width:94vw;
-  height:844px;
-  max-height:88vh;
-  background:var(--bg);
-  border-radius:52px;
-  border:10px solid #08120F;
-  box-shadow:var(--shadow), 0 0 0 1px rgba(255,255,255,0.04) inset;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-.notch{
-  position:absolute;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:120px;
-  height:26px;
-  background:#08120F;
-  border-radius:0 0 16px 16px;
-  z-index:20;
-}
-
-.statusbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px 26px 6px;
-  font-family:'Space Grotesk', sans-serif;
-  font-weight:600;
-  font-size:14px;
-  color:var(--ink);
-  flex-shrink:0;
-}
-.status-icons{ display:flex; align-items:center; gap:6px; color:var(--ink); }
 
 /* ---------- Screens ---------- */
 
