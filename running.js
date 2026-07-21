@@ -47,7 +47,7 @@ document.getElementById("liveTime").innerHTML=
 },1000);
 
 watchId=navigator.geolocation.watchPosition((pos)=>{
-  alert("GPS Working");
+  
 
 const lat=pos.coords.latitude;
 
