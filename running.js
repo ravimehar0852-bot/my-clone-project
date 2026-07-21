@@ -74,6 +74,27 @@ document.getElementById("distance").innerHTML=km.toFixed(2)+" KM";
 let steps=Math.floor(km*1300);
 
 document.getElementById("liveSteps").innerHTML=steps;
+  // Dashboard Live Update
+const goal = 10000;
+
+const stepsValue = document.getElementById("StepsValue");
+if (stepsValue) {
+    stepsValue.innerHTML = steps;
+}
+
+const percent = Math.min(Math.floor((steps / goal) * 100), 100);
+
+const goalText = document.querySelector(".tir-percent");
+if (goalText) {
+    goalText.innerHTML = percent + "%";
+}
+
+const ring = document.getElementById("ringProgress");
+if (ring) {
+    const circumference = 578;
+    ring.style.strokeDashoffset =
+        circumference - (circumference * percent / 100);
+}
 
 document.getElementById("liveCalories").innerHTML=
 Math.floor(km*60)+" kcal";
