@@ -143,8 +143,8 @@ function getUserName() {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadUserProfile();
+    loadProfileSection();
 });
-function loadProfileSection() {
 
     const profile = ProfileManager.getProfile();
 
