@@ -121,22 +121,22 @@ const goalPercent = Math.min(Math.floor((steps / goal) * 100), 100);
 
 const goalText = document.querySelector(".tir-percent");
 if (goalText) {
-    goalText.innerHTML = percent + "%";
+    goalText.innerHTML = goalPercent + "%";
 }
 
 const ring = document.getElementById("ringProgress");
 if (ring) {
     const circumference = 578;
     ring.style.strokeDashoffset =
-        circumference - (circumference * percent / 100);
+        circumference - (circumference * goalPercent / 100);
 }
   // Daily Goal Progress
 const goalBar = document.getElementById("tirBar");
 
 if (goalBar) {
     goalBar.innerHTML =
-        '<div class="tir-seg tir-in" style="width:' + percent + '%"></div>' +
-        '<div class="tir-seg tir-high" style="width:' + (100 - percent) + '%"></div>';
+        '<div class="tir-seg tir-in" style="width:' + goalPercent + '%"p></div>' +
+        '<div class="tir-seg tir-high" style="width:' + (100 - goalPercent) + '%"></div>';
 }
 
 // Goal Completed
