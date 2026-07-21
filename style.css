@@ -508,3 +508,49 @@ z-index:999;
 @media (max-width:400px){
   .phone{ border-radius:40px; }
 }
+.running-card{
+    background:#ffffff;
+    border-radius:20px;
+    padding:20px;
+    margin:18px 0;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.running-card h3{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#0f4a44;
+}
+
+.running-card p{
+    margin-top:10px;
+    color:#666;
+    font-size:14px;
+}
+
+.running-card h2{
+    font-size:30px;
+    color:#1B6B63;
+    margin:5px 0;
+}
+
+.running-card button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    margin-top:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+#startRun{
+    background:#1B6B63;
+    color:#fff;
+}
+
+#stopRun{
+    background:#E53935;
+    color:#fff;
+}
