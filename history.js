@@ -50,3 +50,47 @@ function getWeeklyStats() {
         calories: totalCalories
     };
 }
+function showHistory() {
+
+    const list = document.getElementById("historyList");
+
+    if (!list) return;
+
+    const history = getRunHistory();
+
+    list.innerHTML = "";
+
+    if (history.length === 0) {
+
+        list.innerHTML =
+            "<p>No Running History Found.</p>";
+
+        return;
+
+    }
+
+    history.reverse().forEach(run => {
+
+        list.innerHTML += `
+
+        <div class="history-card">
+
+            <h3>${run.date}</h3>
+
+            <p>👣 Steps : ${run.steps}</p>
+
+            <p>📍 Distance : ${run.distance} KM</p>
+
+            <p>🔥 Calories : ${run.calories}</p>
+
+            <p>⏱ Time : ${Math.floor(run.duration/60)} min</p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", showHistory);
