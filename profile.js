@@ -2,7 +2,7 @@
    Profile Manager
    File: profile.js
    ========================================== */
-
+console.log("Profile JS Loaded");
 const PROFILE_KEY = "runningAppProfile";
 
 const ProfileManager = {
