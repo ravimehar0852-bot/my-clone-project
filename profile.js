@@ -167,3 +167,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 }
+/* ===========================
+   PROFILE MODAL
+=========================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("profileModal");
+    const openBtn = document.getElementById("editProfileBtn");
+    const closeBtn = document.getElementById("closeProfile");
+    const saveBtn = document.getElementById("saveProfileBtn");
+
+    if (openBtn) {
+        openBtn.onclick = () => {
+            modal.style.display = "flex";
+            loadUserProfile();
+        };
+    }
+
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        };
+    }
+
+    window.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    if (saveBtn) {
+        saveBtn.onclick = () => {
+
+            saveUserProfile();
+
+            loadProfileSection();
+
+            modal.style.display = "none";
+
+            alert("✅ Profile Saved Successfully");
+        };
+    }
+
+    loadProfileSection();
+
+});
