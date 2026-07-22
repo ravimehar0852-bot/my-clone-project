@@ -168,6 +168,9 @@ saveRunHistory({
     duration: totalSeconds
 });
   alert("Running Stopped ✅");
+  totalDistance = 0;
+lastPosition = null;
+startTime = null;
 
 };
 
