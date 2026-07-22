@@ -1,166 +1,63 @@
 /* ==========================================
-   Profile Manager
-   File: profile.js
-   ========================================== */
-alert("profile.js loaded");
-console.log("Profile JS Loaded");
+   profile.js
+========================================== */
+
 const PROFILE_KEY = "runningAppProfile";
 
-const ProfileManager = {
-
-    getProfile() {
-        const data = localStorage.getItem(PROFILE_KEY);
-        return data ? JSON.parse(data) : null;
-    },
-
-    saveProfile(profile) {
-        localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
-    },
-
-    updateProfile(newData) {
-        const oldData = this.getProfile() || {};
-
-        const updatedData = {
-            ...oldData,
-            ...newData,
-            updatedAt: new Date().toISOString()
-        };
-
-        this.saveProfile(updatedData);
-    },
-
-    deleteProfile() {
-        localStorage.removeItem(PROFILE_KEY);
-    },
-
-    hasProfile() {
-        return this.getProfile() !== null;
-    }
-};
-
-
-/* ==========================================
-   Save Profile
-   ========================================== */
+/* ---------- Save Profile ---------- */
 
 function saveUserProfile() {
 
     const profile = {
-        name: document.getElementById("name")?.value.trim(),
-        age: document.getElementById("age")?.value,
-        height: document.getElementById("height")?.value,
-        weight: document.getElementById("weight")?.value,
-        dailyGoal: document.getElementById("dailyGoal")?.value,
-        runningTime: document.getElementById("runningTime")?.value,
-        profilePhoto: document.getElementById("profilePhotoPreview")?.src || "",
-        createdAt: new Date().toISOString()
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        height: document.getElementById("height").value,
+        weight: document.getElementById("weight").value,
+        dailyGoal: document.getElementById("dailyGoal").value,
+        runningTime: document.getElementById("runningTime").value
     };
 
-    ProfileManager.saveProfile(profile);
-
-    alert("Profile Saved Successfully!");
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
 }
 
+/* ---------- Load Inputs ---------- */
 
-/* ==========================================
-   Load Profile
-   ========================================== */
+function loadUserProfile() {
+
+    const profile =
+        JSON.parse(localStorage.getItem(PROFILE_KEY));
+
+    if (!profile) return;
+
+    document.getElementById("name").value = profile.name || "";
+    document.getElementById("age").value = profile.age || "";
+    document.getElementById("height").value = profile.height || "";
+    document.getElementById("weight").value = profile.weight || "";
+    document.getElementById("dailyGoal").value = profile.dailyGoal || "";
+    document.getElementById("runningTime").value = profile.runningTime || "";
+}
+
+/* ---------- Update Profile Card ---------- */
 
 function loadProfileSection() {
 
-    const profile = ProfileManager.getProfile();
+    const profile =
+        JSON.parse(localStorage.getItem(PROFILE_KEY));
 
     if (!profile) return;
 
     const name = document.getElementById("profileName");
-    const photo = document.getElementById("profilePhoto");
     const goal = document.getElementById("dailyGoalValue");
 
-    if (name) {
+    if (name)
         name.textContent = profile.name || "Runner";
-    }
 
-    if (photo && profile.profilePhoto) {
-        photo.src = profile.profilePhoto;
-    }
-
-    if (goal) {
-        goal.textContent = (profile.dailyGoal || "10000") + " Steps";
-    }
-
+    if (goal)
+        goal.textContent =
+            (profile.dailyGoal || "10000") + " Steps";
 }
 
-/* ==========================================
-   Profile Photo Upload
-   ========================================== */
-
-function previewProfilePhoto(input) {
-
-    const file = input.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-
-        document.getElementById("profilePhotoPreview").src = e.target.result;
-
-        const profile = ProfileManager.getProfile() || {};
-        profile.profilePhoto = e.target.result;
-
-        ProfileManager.saveProfile(profile);
-    };
-
-    reader.readAsDataURL(file);
-}
-
-
-/* ==========================================
-   Get User Name Anywhere
-   ========================================== */
-
-function getUserName() {
-
-    const profile = ProfileManager.getProfile();
-
-    return profile ? profile.name : "Runner";
-}
-
-
-/* ==========================================
-   Auto Load
-   ========================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadUserProfile();
-    loadProfileSection();
-});
-
-    const profile = ProfileManager.getProfile();
-
-    if (!profile) return;
-
-    const name = document.getElementById("profileName");
-    const photo = document.getElementById("profilePhoto");
-    const goal = document.getElementById("dailyGoalValue");
-
-    if (name) {
-        name.textContent = profile.name || "Runner";
-    }
-
-    if (photo && profile.profilePhoto) {
-        photo.src = profile.profilePhoto;
-    }
-
-    if (goal) {
-        goal.textContent = (profile.dailyGoal || "10000") + " Steps";
-    }
-
-}
-/* ===========================
-   PROFILE MODAL
-=========================== */
+/* ---------- Modal ---------- */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -169,27 +66,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("closeProfile");
     const saveBtn = document.getElementById("saveProfileBtn");
 
+    loadProfileSection();
+
     if (openBtn) {
-        openBtn.onclick = () => {
+
+        openBtn.addEventListener("click", () => {
+
             modal.style.display = "flex";
+
             loadUserProfile();
-        };
+
+        });
+
     }
 
     if (closeBtn) {
-        closeBtn.onclick = () => {
+
+        closeBtn.addEventListener("click", () => {
+
             modal.style.display = "none";
-        };
+
+        });
+
     }
 
-    window.onclick = function(e) {
+    window.addEventListener("click", (e) => {
+
         if (e.target === modal) {
+
             modal.style.display = "none";
+
         }
-    };
+
+    });
 
     if (saveBtn) {
-        saveBtn.onclick = () => {
+
+        saveBtn.addEventListener("click", () => {
 
             saveUserProfile();
 
@@ -197,10 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             modal.style.display = "none";
 
-            alert("✅ Profile Saved Successfully");
-        };
-    }
+            alert("✅ Profile Saved");
 
-    loadProfileSection();
+        });
+
+    }
 
 });
