@@ -66,39 +66,29 @@ function saveUserProfile() {
    Load Profile
    ========================================== */
 
-function loadUserProfile() {
+function loadProfileSection() {
 
     const profile = ProfileManager.getProfile();
 
     if (!profile) return;
 
-    if (document.getElementById("name"))
-        document.getElementById("name").value = profile.name || "";
+    const name = document.getElementById("profileName");
+    const photo = document.getElementById("profilePhoto");
+    const goal = document.getElementById("dailyGoalValue");
 
-    if (document.getElementById("age"))
-        document.getElementById("age").value = profile.age || "";
-
-    if (document.getElementById("height"))
-        document.getElementById("height").value = profile.height || "";
-
-    if (document.getElementById("weight"))
-        document.getElementById("weight").value = profile.weight || "";
-
-    if (document.getElementById("dailyGoal"))
-        document.getElementById("dailyGoal").value = profile.dailyGoal || "";
-
-    if (document.getElementById("runningTime"))
-        document.getElementById("runningTime").value = profile.runningTime || "";
-
-    if (
-        document.getElementById("profilePhotoPreview") &&
-        profile.profilePhoto
-    ) {
-        document.getElementById("profilePhotoPreview").src =
-            profile.profilePhoto;
+    if (name) {
+        name.textContent = profile.name || "Runner";
     }
-}
 
+    if (photo && profile.profilePhoto) {
+        photo.src = profile.profilePhoto;
+    }
+
+    if (goal) {
+        goal.textContent = (profile.dailyGoal || "10000") + " Steps";
+    }
+
+}
 
 /* ==========================================
    Profile Photo Upload
