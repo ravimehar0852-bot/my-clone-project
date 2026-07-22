@@ -155,9 +155,7 @@ document.getElementById("stopRun").onclick = function () {
     clearInterval(timer);
     timer = null;
   }
-
-  alert("Running Stopped ✅");
-  const km = totalDistance / 1000;
+const km = totalDistance / 1000;
 const steps = Math.round(km * 1250);
 const calories = Math.round(km * 60);
 
@@ -169,6 +167,8 @@ saveRunHistory({
     calories: calories,
     duration: totalSeconds
 });
+  alert("Running Stopped ✅");
+
 };
 
 function updateWeeklyReport(steps, distance, calories, seconds) {
