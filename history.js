@@ -97,6 +97,12 @@ function showHistory() {
 }
 
 document.addEventListener("DOMContentLoaded", showHistory);
+const streakBox = document.getElementById("streakValue");
+
+if (streakBox) {
+    streakBox.innerHTML =
+        (localStorage.getItem("fittrack_streak") || 0) + " Days";
+}
 function checkAchievements(steps){
 
     let badges=[];
