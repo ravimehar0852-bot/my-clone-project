@@ -71,7 +71,7 @@ if (heightCard)
 if (ageCard)
     ageCard.textContent = (profile.age || "0") + " Y";
 }
-}
+
 
 /* ---------- Modal ---------- */
 
