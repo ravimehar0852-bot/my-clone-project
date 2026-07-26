@@ -94,3 +94,19 @@ function showHistory() {
 }
 
 document.addEventListener("DOMContentLoaded", showHistory);
+function checkAchievements(steps){
+
+    let badges=[];
+
+    if(steps>=1000) badges.push("🥉 First 1K Steps");
+
+    if(steps>=5000) badges.push("🥈 5K Walker");
+
+    if(steps>=10000) badges.push("🥇 10K Champion");
+
+    localStorage.setItem(
+        "badges",
+        JSON.stringify(badges)
+    );
+
+}
