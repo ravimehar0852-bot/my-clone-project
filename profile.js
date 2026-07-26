@@ -56,7 +56,22 @@ function loadProfileSection() {
         goal.textContent =
             (profile.dailyGoal || "10000") + " Steps";
 }
+// Home Dashboard Summary
+const weightCard = document.getElementById("weightCard");
+const heightCard = document.getElementById("heightCard");
+const ageCard = document.getElementById("ageCard");
 
+if (weightCard) {
+    weightCard.textContent = (profile.weight || "0") + " kg";
+}
+
+if (heightCard) {
+    heightCard.textContent = (profile.height || "0") + " cm";
+}
+
+if (ageCard) {
+    ageCard.textContent = (profile.age || "0") + " Y";
+}
 /* ---------- Modal ---------- */
 
 document.addEventListener("DOMContentLoaded", () => {
