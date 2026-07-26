@@ -133,26 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-// Elements
-const saveBtn = document.getElementById("saveProfileBtn");
 
-saveBtn.addEventListener("click", () => {
-
-    const profile = {
-        name: document.getElementById("name").value,
-        age: document.getElementById("age").value,
-        height: document.getElementById("height").value,
-        weight: document.getElementById("weight").value,
-        dailyGoal: document.getElementById("dailyGoal").value,
-        runningTime: document.getElementById("runningTime").value
-    };
-
-    localStorage.setItem("fittrackProfile", JSON.stringify(profile));
-
-    alert("✅ Profile Saved Successfully");
-
-    loadProfile();
-});
 
 // Load Profile
 function loadProfile() {
