@@ -11,6 +11,7 @@ function saveRunHistory(data) {
     let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
    updateTrendData();
    showHistory();
+   updateStreak();
 
     history.push({
         date: new Date().toLocaleDateString(),
@@ -195,4 +196,35 @@ function showHistory() {
 
     });
 
+}
+function updateStreak() {
+
+    const history = loadHistory();
+
+    if (history.length === 0) return;
+
+    let streak = Number(localStorage.getItem("fittrack_streak")) || 0;
+
+    const today = new Date().toLocaleDateString();
+
+    const lastRun = localStorage.getItem("last_run_date");
+
+    if (lastRun === today) {
+        return;
+    }
+
+    streak++;
+
+    localStorage.setItem("fittrack_streak", streak);
+    localStorage.setItem("last_run_date", today);
+
+    const streakBox = document.getElementById("streakValue");
+
+    if (streakBox) {
+        streakBox.innerHTML = streak + " Days";
+    }
+
+    if (streak >= 7) {
+        alert("🔥 Congratulations! 7 Day Streak Completed");
+    }
 }
