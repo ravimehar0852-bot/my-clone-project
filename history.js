@@ -128,3 +128,33 @@ function checkAchievements(steps) {
 
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
+const HISTORY_KEY = "fittrack_history";
+
+function loadHistory() {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+}
+
+function updateTrendData() {
+
+    const history = loadHistory();
+
+    let totalSteps = 0;
+    let totalCalories = 0;
+    let totalDistance = 0;
+
+    history.forEach(item => {
+        totalSteps += item.steps;
+        totalCalories += item.calories;
+        totalDistance += item.distance;
+    });
+
+    const steps = document.getElementById("stepsValue");
+    const calories = document.getElementById("caloriesValue");
+    const distance = document.getElementById("distanceValue");
+
+    if (steps) steps.innerHTML = totalSteps;
+    if (calories) calories.innerHTML = totalCalories;
+    if (distance) distance.innerHTML = totalDistance.toFixed(2) + " km";
+}
+
+document.addEventListener("DOMContentLoaded", updateTrendData);
