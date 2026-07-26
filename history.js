@@ -10,6 +10,7 @@ function saveRunHistory(data) {
 
     let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
    updateTrendData();
+   showHistory();
 
     history.push({
         date: new Date().toLocaleDateString(),
@@ -159,3 +160,39 @@ function updateTrendData() {
 }
 
 document.addEventListener("DOMContentLoaded", updateTrendData);
+function showHistory() {
+
+    const list =
+        document.getElementById("trendsLogList") ||
+        document.getElementById("dashboardLogList");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    const history = loadHistory();
+
+    history.reverse().forEach(run => {
+
+        const li = document.createElement("li");
+
+        li.className = "log-item";
+
+        li.innerHTML = `
+            <div>
+                <strong>${run.date}</strong><br>
+                <small>${run.time}</small>
+            </div>
+
+            <div>
+                👣 ${run.steps}<br>
+                📍 ${run.distance.toFixed(2)} KM<br>
+                🔥 ${run.calories} kcal
+            </div>
+        `;
+
+        list.appendChild(li);
+
+    });
+
+}
