@@ -76,7 +76,7 @@ document.getElementById("distance").innerHTML=km.toFixed(2)+" KM";
 let steps = Math.round(km * 1250);
   console.log("KM:", km, "Steps:", steps);
   let calories = Math.round(km * 65);
-
+checkAchievements(steps);
 let totalSeconds = Math.floor((Date.now() - startTime) / 1000);
 
 updateWeeklyReport(
