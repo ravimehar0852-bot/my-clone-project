@@ -9,6 +9,7 @@ const HISTORY_KEY = "runningHistory";
 function saveRunHistory(data) {
 
     let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+   updateTrendData();
 
     history.push({
         date: new Date().toLocaleDateString(),
