@@ -117,3 +117,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+// Elements
+const saveBtn = document.getElementById("saveProfileBtn");
+
+saveBtn.addEventListener("click", () => {
+
+    const profile = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        height: document.getElementById("height").value,
+        weight: document.getElementById("weight").value,
+        dailyGoal: document.getElementById("dailyGoal").value,
+        runningTime: document.getElementById("runningTime").value
+    };
+
+    localStorage.setItem("fittrackProfile", JSON.stringify(profile));
+
+    alert("✅ Profile Saved Successfully");
+
+    loadProfile();
+});
+
+// Load Profile
+function loadProfile() {
+
+    const data = JSON.parse(localStorage.getItem("fittrackProfile"));
+
+    if (!data) return;
+
+    // Profile Page
+    document.getElementById("profileName").innerText = data.name || "Runner";
+
+    if(data.dailyGoal){
+        document.getElementById("dailyGoalValue").innerText =
+        data.dailyGoal + " Steps";
+    }
+
+    // Home Screen
+    const homeName = document.getElementById("homeUserName");
+    if(homeName){
+        homeName.innerText = data.name;
+    }
+
+}
+
+window.onload = loadProfile;
