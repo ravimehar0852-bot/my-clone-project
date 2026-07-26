@@ -162,3 +162,27 @@ function loadProfile() {
 }
 
 window.onload = loadProfile;
+function checkRunningReminder() {
+
+    const data = JSON.parse(localStorage.getItem("fittrackProfile"));
+
+    if (!data || !data.runningTime) return;
+
+    const now = new Date();
+
+    const current =
+        String(now.getHours()).padStart(2,"0") + ":" +
+        String(now.getMinutes()).padStart(2,"0");
+
+    if (current === data.runningTime) {
+
+        alert(
+            "🏃 Hi " + data.name +
+            ", it's your running time! Let's complete today's goal 💪"
+        );
+
+    }
+
+}
+
+setInterval(checkRunningReminder,60000);
