@@ -110,3 +110,21 @@ function checkAchievements(steps){
     );
 
 }
+function checkAchievements(steps) {
+
+    let achievements = JSON.parse(localStorage.getItem("achievements")) || [];
+
+    if (steps >= 1000 && !achievements.includes("🥉 First 1K Steps")) {
+        achievements.push("🥉 First 1K Steps");
+    }
+
+    if (steps >= 5000 && !achievements.includes("🥈 5K Walker")) {
+        achievements.push("🥈 5K Walker");
+    }
+
+    if (steps >= 10000 && !achievements.includes("🥇 10K Champion")) {
+        achievements.push("🥇 10K Champion");
+    }
+
+    localStorage.setItem("achievements", JSON.stringify(achievements));
+}
