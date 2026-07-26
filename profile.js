@@ -183,3 +183,30 @@ function checkRunningReminder() {
 }
 
 setInterval(checkRunningReminder,60000);
+const photoInput = document.getElementById("profilePhotoInput");
+
+if (photoInput) {
+
+    photoInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+
+            localStorage.setItem("profilePhoto", e.target.result);
+
+            const img = document.getElementById("profilePhoto");
+            if (img) {
+                img.src = e.target.result;
+            }
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
