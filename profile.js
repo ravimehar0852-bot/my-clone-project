@@ -55,8 +55,7 @@ function loadProfileSection() {
     if (goal)
         goal.textContent =
             (profile.dailyGoal || "10000") + " Steps";
-}
-// Home Dashboard Summary
+   // Home Dashboard Summary
 
 const weightCard = document.getElementById("weightCard");
 const heightCard = document.getElementById("heightCard");
@@ -71,6 +70,7 @@ if (heightCard)
 if (ageCard)
     ageCard.textContent = (profile.age || "0") + " Y";
 }
+
 
 
 /* ---------- Modal ---------- */
