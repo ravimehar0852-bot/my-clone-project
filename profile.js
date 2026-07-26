@@ -71,7 +71,13 @@ if (ageCard)
     ageCard.textContent = (profile.age || "0") + " Y";
 }
 
+const img = document.getElementById("profilePhoto");
 
+const savedPhoto = localStorage.getItem("profilePhoto");
+
+if (img && savedPhoto) {
+    img.src = savedPhoto;
+}
 
 /* ---------- Modal ---------- */
 
