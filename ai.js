@@ -40,12 +40,11 @@ if (!response.ok) {
 
 return data.candidates[0].content.parts[0].text;
 
-}catch(e){
-
+catch (e) {
+    alert(e.message);
     console.log(e);
     return "AI Coach is unavailable.";
-
-    }
+}
 
 async function updateAICoach(){
 
