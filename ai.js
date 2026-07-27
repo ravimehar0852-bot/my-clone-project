@@ -31,21 +31,23 @@ async function askAI(question){
 
         const data = await response.json();
 
-console.log("Status:", response.status);
-console.log("Response:", data);
+        console.log("Status:", response.status);
+        console.log("Response:", data);
 
-if (!response.ok) {
-    return JSON.stringify(data);
-}
-        console.log(response.status);
-console.log(data);
+        if (!response.ok) {
+            return JSON.stringify(data);
+        }
 
-return data.candidates[0].content.parts[0].text;
+        return data.candidates[0].content.parts[0].text;
 
-catch (e) {
-    alert(e.message);
-    console.log(e);
-    return "AI Coach is unavailable.";
+    } catch (e) {
+
+        alert(e.message);
+        console.log(e);
+        return "AI Coach is unavailable.";
+
+    }
+
 }
 
 async function updateAICoach(){
