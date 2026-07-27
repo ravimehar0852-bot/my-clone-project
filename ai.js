@@ -2,7 +2,7 @@
 // FITTRACK ONE AI COACH
 // ===============================
 
-const GEMINI_API_KEY = "AQ.Ab8RN6JthXsO2Su9M6OUIXJmv09WaaWK0e8kztP63MAl1RMR7Q";
+const GEMINI_API_KEY = "AQ.Ab8RN6ICkX6BiXPdoRRlR_eimJKQIrqrlI7FzQDsdK-2AqrC4Q";
 
 async function askAI(question){
 
