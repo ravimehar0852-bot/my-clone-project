@@ -4,23 +4,24 @@
 
 const GEMINI_API_KEY = "AQ.Ab8RN6ICkX6BiXPdoRRlR_eimJKQIrqrlI7FzQDsdK-2AqrC4Q";
 
-async function askAI(question){
+// Ask Gemini AI
+async function askAI(question) {
 
-    try{
+    try {
 
         const response = await fetch(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY,
             {
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({
-                    contents:[
+                body: JSON.stringify({
+                    contents: [
                         {
-                            parts:[
+                            parts: [
                                 {
-                                    text:question
+                                    text: question
                                 }
                             ]
                         }
@@ -35,14 +36,23 @@ async function askAI(question){
         console.log("Response:", data);
 
         if (!response.ok) {
-            return JSON.stringify(data);
+            return "❌ " + JSON.stringify(data);
         }
 
-        return data.candidates[0].content.parts[0].text;
+        if (
+            data.candidates &&
+            data.candidates.length > 0 &&
+            data.candidates[0].content &&
+            data.candidates[0].content.parts &&
+            data.candidates[0].content.parts.length > 0
+        ) {
+            return data.candidates[0].content.parts[0].text;
+        }
+
+        return "No AI response received.";
 
     } catch (e) {
 
-        alert(e.message);
         console.log(e);
         return "AI Coach is unavailable.";
 
@@ -50,7 +60,8 @@ async function askAI(question){
 
 }
 
-async function updateAICoach(){
+// Update Coach Card
+async function updateAICoach() {
 
     const profile =
         JSON.parse(localStorage.getItem("fittrackProfile")) || {};
@@ -58,22 +69,18 @@ async function updateAICoach(){
     const history =
         JSON.parse(localStorage.getItem("fittrack_history")) || [];
 
-    let lastRun = history.length
-        ? history[history.length-1]
-        : null;
+    const lastRun =
+        history.length > 0
+            ? history[history.length - 1]
+            : null;
 
-    let prompt =
-`
+    const prompt = `
 You are FitTrack ONE AI Fitness Coach.
 
 User Name: ${profile.name || "Runner"}
-
 Age: ${profile.age || "Unknown"}
-
 Weight: ${profile.weight || "Unknown"}
-
 Height: ${profile.height || "Unknown"}
-
 Daily Goal: ${profile.dailyGoal || 10000} Steps
 
 Last Run:
@@ -86,13 +93,14 @@ Give only a short motivational fitness advice in 3-4 lines.
 
     const coach = document.getElementById("coachMessage");
 
-if (coach) {
-    coach.innerHTML = answer;
-}
+    if (coach) {
+        coach.innerHTML = answer;
+    }
 
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+// Run after page loads
+document.addEventListener("DOMContentLoaded", () => {
 
     updateAICoach();
 
