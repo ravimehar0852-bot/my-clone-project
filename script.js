@@ -3,7 +3,7 @@
    PulseBuddy — app logic
    Vanilla JS, no dependencies. All state lives in memory for this session.
    ========================================================================= */
-const GEMINI_API_KEY = "YAHAN_APNI_API_KEY_PASTE_KARO";
+const GEMINI_API_KEY = "AQ.Ab8RN6JthXsO2Su9M6OUIXJmv09WaaWK0e8kztP63MAl1RMR7Q";
 alert("Script Loaded");
 (function () {
   'use strict';
