@@ -821,3 +821,22 @@ margin-bottom:10px;
     font-size:14px;
     font-weight:bold;
 }
+.coach-card{
+    background:#1f8f6a;
+    color:white;
+    padding:15px;
+    margin:15px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.coach-card h3{
+    margin:0 0 10px;
+    font-size:18px;
+}
+
+.coach-card p{
+    margin:0;
+    line-height:1.6;
+    font-size:14px;
+}
