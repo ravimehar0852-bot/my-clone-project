@@ -2,7 +2,7 @@
 // FITTRACK ONE AI COACH
 // ===============================
 
-const GEMINI_API_KEY = "YAHAN_APNI_API_KEY";
+const GEMINI_API_KEY = "AQ.Ab8RN6JthXsO2Su9M6OUIXJmv09WaaWK0e8kztP63MAl1RMR7Q";
 
 async function askAI(question){
 
