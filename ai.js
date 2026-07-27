@@ -37,6 +37,8 @@ console.log("Response:", data);
 if (!response.ok) {
     return JSON.stringify(data);
 }
+        console.log(response.status);
+console.log(data);
 
 return data.candidates[0].content.parts[0].text;
 
