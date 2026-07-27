@@ -216,3 +216,38 @@ if (photoInput) {
     });
 
 }
+function updateCoach() {
+
+    const profile =
+        JSON.parse(localStorage.getItem(PROFILE_KEY));
+
+    if(!profile) return;
+
+    const coach =
+        document.getElementById("coachMessage");
+
+    if(!coach) return;
+
+    const hour = new Date().getHours();
+
+    let greet = "Good Evening";
+
+    if(hour < 12)
+        greet = "Good Morning";
+
+    else if(hour < 17)
+        greet = "Good Afternoon";
+
+    coach.innerHTML =
+`👋 ${greet} ${profile.name}<br><br>
+
+🎯 Goal : ${profile.dailyGoal} Steps<br>
+
+🏃 Running Time : ${profile.runningTime}<br>
+
+💧 Drink at least 2L water today.<br>
+
+😴 Sleep 7-8 hours tonight.<br>
+
+🔥 Keep moving and stay consistent!`;
+}
