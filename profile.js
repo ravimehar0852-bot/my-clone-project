@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveBtn = document.getElementById("saveProfileBtn");
 
     loadProfileSection();
+   updateCoach();
 
     if (openBtn) {
 
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveUserProfile();
 
             loadProfileSection();
+           updateCoach();
 
             modal.style.display = "none";
 
