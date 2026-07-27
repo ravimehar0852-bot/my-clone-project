@@ -31,13 +31,14 @@ async function askAI(question){
 
         const data = await response.json();
 
-        return data.candidates[0].content.parts[0].text;
+console.log("Status:", response.status);
+console.log("Response:", data);
 
-    }catch(e){
+if (!response.ok) {
+    return JSON.stringify(data);
+}
 
-        return "AI Coach is unavailable.";
-
-    }
+return data.candidates[0].content.parts[0].text;
 
 }
 
