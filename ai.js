@@ -82,13 +82,11 @@ Give only a short motivational fitness advice in 3-4 lines.
 
     const answer = await askAI(prompt);
 
-    const coach = document.getElementById("coachCard");
+    const coach = document.getElementById("coachMessage");
 
-    if(coach){
-
-        coach.innerHTML = answer;
-
-    }
+if (coach) {
+    coach.innerHTML = answer;
+}
 
 }
 
