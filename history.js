@@ -103,22 +103,7 @@ if (streakBox) {
     streakBox.innerHTML =
         (localStorage.getItem("fittrack_streak") || 0) + " Days";
 }
-function checkAchievements(steps){
 
-    let badges=[];
-
-    if(steps>=1000) badges.push("🥉 First 1K Steps");
-
-    if(steps>=5000) badges.push("🥈 5K Walker");
-
-    if(steps>=10000) badges.push("🥇 10K Champion");
-
-    localStorage.setItem(
-        "badges",
-        JSON.stringify(badges)
-    );
-
-}
 function checkAchievements(steps) {
 
     let achievements = JSON.parse(localStorage.getItem("achievements")) || [];
