@@ -27,8 +27,8 @@ function saveRunHistory(data) {
 
 /* Load History */
 
-function getRunHistory() {
-    return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+function loadHistory() {
+    return getRunHistory();
 }
 
 /* Weekly Stats */
@@ -137,7 +137,7 @@ function checkAchievements(steps) {
 
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
-const HISTORY_KEY = "fittrack_history";
+
 
 function loadHistory() {
     return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
