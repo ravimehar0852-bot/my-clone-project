@@ -2,62 +2,38 @@
 // FITTRACK ONE AI COACH
 // ===============================
 
-const GEMINI_API_KEY = "AQ.Ab8RN6KbJMYy5hoOOGtkf1ldm_MCh21WldYnzd5vB7uURkDVXA";
+
 
 // Ask Gemini AI
 async function askAI(question) {
+  try {
+    const response = await fetch("/api/gemini", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        prompt: question
+      })
+    });
 
-    try {
+    const data = await response.json();
 
-        const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [
-                                {
-                                    text: question
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
-        );
-
-        const data = await response.json();
-
-        console.log("Status:", response.status);
-        console.log("Response:", data);
-
-        if (!response.ok) {
-            return "❌ " + JSON.stringify(data);
-        }
-
-        if (
-            data.candidates &&
-            data.candidates.length > 0 &&
-            data.candidates[0].content &&
-            data.candidates[0].content.parts &&
-            data.candidates[0].content.parts.length > 0
-        ) {
-            return data.candidates[0].content.parts[0].text;
-        }
-
-        return "No AI response received.";
-
-    } catch (e) {
-
-        console.log(e);
-        return "AI Coach is unavailable.";
-
+    if (
+      data.candidates &&
+      data.candidates.length > 0 &&
+      data.candidates[0].content &&
+      data.candidates[0].content.parts &&
+      data.candidates[0].content.parts.length > 0
+    ) {
+      return data.candidates[0].content.parts[0].text;
     }
 
+    return "No AI response received.";
+  } catch (e) {
+    console.log(e);
+    return "AI Coach is unavailable.";
+  }
 }
 
 // Update Coach Card
